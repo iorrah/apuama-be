@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "img": "Avenida Paulista.jpg",
+    "title": "Avenida Paulista"
+  },
+  {
+    "id": 2,
+    "img": "Beco do Batman.jpg",
+    "title": "Beco do Batman"
+  },
+  {
+    "id": 3,
+    "img": "Catedral Sao Paulo.jpg",
+    "title": "Catedral São Paulo"
+  },
+  {
+    "id": 4,
+    "img": "Edificio Italia.jpg",
+    "title": "Edifício Itália"
+  },
+  {
+    "id": 5,
+    "img": "Favela Paraisopolis.jpg",
+    "title": "Favela Paraisópolis"
+  },
+  {
+    "id": 6,
+    "img": "Monumento as Bandeiras.jpeg",
+    "title": "Monumento aos Bandeiras"
+  },
+  {
+    "id": 7,
+    "img": "Museu de Arte de Sao Paulo - MASP.jpg",
+    "title": "Museu de Arte de São Paulo - MASP"
+  },
+  {
+    "id": 8,
+    "img": "Parque Villa-Lobos.jpg",
+    "title": "Parque Villa-Lobos"
+  },
+  {
+    "id": 9,
+    "img": "Patio do Colegio.jpg",
+    "title": "Pátio do Colégio"
+  },
+  {
+    "id": 10,
+    "img": "Pinacoteca do Estado de Sao Paulo.jpg",
+    "title": "Pinacoteca do Estado de São Paulo"
+  }
+]
