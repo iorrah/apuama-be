@@ -17,6 +17,10 @@
 .env.test.local
 .env.production.local
 
+# package managers
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# db
+/db/gallery.json

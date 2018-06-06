@@ -1,19 +1,18 @@
 const express = require('express');
-const bodyParser     = require('body-parser');
-var fs = require("fs");
-
 const app = express();
+
+const cors = require('cors');
+app.use(cors());
+
+const bodyParser = require('body-parser');
+const fs = require("fs");
 
 const DB_PATH = 'db/gallery.json';
 const DB_ENCODE = 'utf8';
 
-app.use(bodyParser.urlencoded({ extended: true }));
+const sortBy = require('sort-by');
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.send('Invalid path');
@@ -21,7 +20,8 @@ app.get('/', (req, res) => {
 
 app.get('/api/gallery', (req, res) => {
   fs.readFile(DB_PATH, DB_ENCODE, (err, data) => {
-    res.end(data);
+    const newData = JSON.parse(data).sort(sortBy('id'));
+    res.end(JSON.stringify(newData));
   });
 });
 
@@ -41,11 +41,11 @@ app.post('/api/gallery/add', (req, res) => {
     parsedDb = JSON.parse(data);
     const updatedDb = [ ...parsedDb, newItem ];
     fs.writeFileSync(DB_PATH, JSON.stringify(updatedDb));
-    res.end(JSON.stringify(updatedDb));
+    res.end(JSON.stringify(updatedDb.sort(sortBy('id'))));
   });
 });
 
-app.put('/api/gallery/:id/favorite', (req, res) => {
+app.put('/api/gallery/:id/like', (req, res) => {
   fs.readFile(DB_PATH, DB_ENCODE, (err, data) => {
     // Arrange
     const id = parseInt(req.params.id, 10);
@@ -53,13 +53,13 @@ app.put('/api/gallery/:id/favorite', (req, res) => {
 
     // Act
     const item = parsedDb.find((e) => e.id === id);
-    item.favorited = true;
+    item.liked = !item.liked;
 
     // Persist
     const others = parsedDb.filter((e) => e.id !== id);
     const updatedDb = [ ...others, item ];
     fs.writeFileSync(DB_PATH, JSON.stringify(updatedDb));
-    res.end(JSON.stringify(updatedDb));
+    res.end(JSON.stringify(updatedDb.sort(sortBy('id'))));
   });
 });
 
