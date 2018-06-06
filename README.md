@@ -1,4 +1,6 @@
-Apuama Backend
+# Apuama Backend 
+
+[![Build Status](https://travis-ci.com/iorrah/apuama-be.svg?branch=master)](https://travis-ci.com/iorrah/apuama-be)
 
 This project was bootstrapped Node.js and Express.
 
